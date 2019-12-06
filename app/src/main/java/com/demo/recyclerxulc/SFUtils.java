@@ -47,15 +47,19 @@ public class SFUtils {
                 Gson gson = new Gson();
                 tabItems =  gson.fromJson(allData,new TypeToken<List<TabItem>>(){}.getType());
                 if(tabItems!=null){
+                    int id=0;
+                    int parentId=0;
                     for(int i=0;i< tabItems.size();i++){
+                        id++;
+                        parentId=id;
                         //设置标签
-                        FunctionItem functionItem = new FunctionItem(tabItems.get(i).getTabName(),true,""+i,true);
+                        FunctionItem functionItem = new FunctionItem(tabItems.get(i).getTabName(),true,""+id,true);
                         functionItems.add(functionItem);
                         ArrayList<FunctionItem> items = tabItems.get(i).getFunctionItems();
                         for (FunctionItem item:items ) {
                             item.isVisible=false;
                             item.isShow=true;
-                            item.parentId=""+i;
+                            item.parentId=""+parentId;
                             functionItems.add(item);
                         }
 

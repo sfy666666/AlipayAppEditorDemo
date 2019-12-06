@@ -1,16 +1,19 @@
 package com.demo.recyclerxulc;
 
+/**
+ * 微应用实例
+ */
 public class FunctionItem {
 
     public String name;
     public boolean isSelect = false;
-    public String imageUrl = "";
-    public String background = "";
-    public boolean isTitle = false;
+    public String imageUrl = "";      //图片地址
+    public String background = "";    //背景色
+    public boolean isTitle = false;   //是否是标题
     public int subItemCount = 0;
     public boolean isVisible = false;//按钮显示状态  默认不显示
-    public String id = "";
-    public String parentId = "";
+    public String id = null;        //null表示微应用   非null表示微应用的标题
+    public String parentId = null;  //用于判断当前微应用属于哪个标题
     public boolean isShow = false;//条目显示状态 默认不显示
 
     public FunctionItem(String name, boolean isTitle, String id, boolean isShow) {

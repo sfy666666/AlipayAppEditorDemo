@@ -15,6 +15,9 @@ import java.util.Collections;
 import java.util.List;
 
 
+/**
+ * 我的应用适配器
+ */
 public class FunctionBlockAdapter extends RecyclerView.Adapter<FunctionBlockAdapter.ViewHolder> implements ItemTouchHelperAdapter {
 
     private List<FunctionItem> data = new ArrayList<>();

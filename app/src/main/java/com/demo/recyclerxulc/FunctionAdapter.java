@@ -13,6 +13,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+/**
+ * 全部微应用适配器
+ */
 public class FunctionAdapter extends RecyclerView.Adapter {
 
     private List<FunctionItem> data = new ArrayList<>();
@@ -43,7 +46,31 @@ public class FunctionAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int position) {
         if (0 == getItemViewType(position)) {
             TitleViewHolder holder = (TitleViewHolder) viewHolder;
-            holder.text.setText(data.get(position).name);
+            boolean tabStatus=false;
+            //当前标签下的微应用集合
+            List<FunctionItem>  currentTabContent =  new ArrayList<>();
+            for (FunctionItem item:data) {
+                if(data.get(position).id.equals(item.parentId)){
+                    currentTabContent.add(item);
+                }
+            }
+            //当前标题下有内容才显示标题 否则不显示标题
+            //标题下有内容
+            if(currentTabContent.size()>0){
+                   tabStatus=true;
+            }
+            //标题下无内容
+            else {
+                    tabStatus=false;
+                }
+            if (tabStatus){
+                holder.text.setVisibility(View.VISIBLE);
+                holder.text.setText(data.get(position).name);
+            }else {
+                holder.text.setVisibility(View.GONE);
+            }
+
+
         } else {
             final int index = position;
             FunctionViewHolder holder = (FunctionViewHolder) viewHolder;
@@ -66,8 +93,6 @@ public class FunctionAdapter extends RecyclerView.Adapter {
                                 }
                             }
                         }
-
-
                     }
                 });
             }else {

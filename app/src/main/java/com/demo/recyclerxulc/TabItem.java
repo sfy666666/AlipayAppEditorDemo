@@ -3,7 +3,8 @@ package com.demo.recyclerxulc;
 import java.util.ArrayList;
 
 /**
- * Created by xulc on 2018/6/29.
+ *
+ *   微应用标题实例
  */
 
 public class TabItem {

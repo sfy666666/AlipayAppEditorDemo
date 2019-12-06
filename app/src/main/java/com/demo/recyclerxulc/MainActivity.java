@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -166,6 +167,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         resetEditHeight(selData.size());
                         blockAdapter.notifyDataSetChanged();
                         functionAdapter.notifyDataSetChanged();
+                        //标题下没有内容时不显示
+                        for (FunctionItem functionItem:allData) {
+                            //id不为空说明是标题
+                            if(item.parentId!=null&&!item.parentId.equals(functionItem.parentId)&&functionItem.id!=null&&functionItem.id.equals(item.parentId)){
+//                                functionItem.isShow=false;
+                            }else {
+
+                            }
+                        }
+
 //                        item.isSelect = true;
                         return false;//可点击  true不可点击
                     } catch (Exception e) {
